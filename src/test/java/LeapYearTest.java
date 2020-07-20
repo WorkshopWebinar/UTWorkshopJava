@@ -9,7 +9,7 @@ import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
 import static org.junit.Assert.*;
-@RunWith(JUnitParamsRunner.class)
+
 public class LeapYearTest {
     LeapYear leapYear;
     @Before
@@ -21,29 +21,11 @@ public class LeapYearTest {
     public void tearDown() throws Exception {
     }
 
-    private Object[] parametersToTestisLeapYear() {
-
-        return new Object[]{
-                new Object[] {400,true} ,
-                new Object[] {4,true} ,
-                new Object[] {100,false},
-
-                new Object[] {401,false} ,
-                new Object[] {399,false} ,
-
-                new Object[] {3,false} ,
-                new Object[] {5,false} ,
-
-                new Object[] {99,false} ,
-                new Object[] {101,false} ,
-
-        };
-    }
-
-    @Test
-    @Parameters(method = "parametersToTestisLeapYear")
-    public void isLeapYear(int year, boolean expectedLeapYear) {
-        boolean actualLeapYear = leapYear.isLeapYear(year);
-        Assert.assertEquals(expectedLeapYear, actualLeapYear);
-    }
+	@Test
+	public void leapTestPassBy2000() {
+		String msg = "Year 2000 should be a leap year.";
+		boolean result = leapYear.isLeapYear(2000);
+		assertEquals(msg, true, result);
+	}
+	
 }
